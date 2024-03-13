@@ -1,0 +1,16 @@
+---
+version: "3.7"
+
+services:
+  tinyproxy:
+    build:
+      dockerfile: $PWD/Dockerfile.tiny
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+  caddy:
+    build:
+      dockerfile: $PWD/Dockerfile.caddy
+    restart: unless-stopped
+    ports:
+      - "8080:8080"

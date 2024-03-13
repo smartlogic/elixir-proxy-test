@@ -1,0 +1,4 @@
+FROM kalaksi/tinyproxy:1.6
+
+COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf
+COPY tinyallow.acl /etc/tinyproxy/allow.acl

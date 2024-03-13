@@ -1,0 +1,27 @@
+{
+	debug
+	log {
+		format console
+		level INFO
+	}
+	auto_https off
+}
+
+:8080 {
+	route {
+		forward_proxy {
+			acl {
+				allow *.google.com
+				allow *.smartlogic.io
+				deny all
+			}
+			ports 443
+			serve_pac
+		}
+	}
+	log {
+		format json
+		level INFO
+		output stdout
+	}
+}

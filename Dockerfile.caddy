@@ -1,0 +1,12 @@
+FROM caddy:2.7-builder AS builder
+
+ARG GOARCH=amd64
+RUN xcaddy build \
+    --with github.com/caddyserver/forwardproxy
+
+FROM caddy:2.7-alpine
+
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+COPY Caddyfile /etc/caddy/Caddyfile
+
+EXPOSE 8080
