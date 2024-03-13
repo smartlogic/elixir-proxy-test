@@ -1,12 +1,12 @@
-defmodule ProxyTest.Caddy do
+defmodule ProxyTest.Squid do
   @moduledoc """
-  Documentation for `ProxyTest.Caddy`.
+  Documentation for `ProxyTest.Squid`.
   """
 
   def connection_options do
     [
       protocols: [:http1],
-      proxy: {:http, "127.0.0.1", 8080, []}
+      proxy: {:http, "127.0.0.1", 3128, []}
     ]
   end
 
@@ -62,7 +62,7 @@ defmodule ProxyTest.Caddy do
   def finch_bad do
     response =
       Finch.build(:get, "https://yahoo.com")
-      |> Finch.request(CaddyFinch)
+      |> Finch.request(SquidFinch)
 
     case response do
       {:ok, resp} ->
@@ -83,7 +83,7 @@ defmodule ProxyTest.Caddy do
   def finch_good do
     response =
       Finch.build(:get, "https://www.google.com")
-      |> Finch.request(CaddyFinch)
+      |> Finch.request(SquidFinch)
 
     case response do
       {:ok, resp} ->

@@ -11,6 +11,17 @@ defmodule ProxyTest.Application do
       # Starts a worker by calling: ProxyTest.Worker.start_link(arg)
       # {ProxyTest.Worker, arg}
       {Finch,
+       name: SquidFinch,
+       pools: %{
+         :default => [
+           size: 5,
+           conn_opts: [
+             protocols: [:http1],
+             proxy: {:http, "127.0.0.1", 3128, []}
+           ]
+         ]
+       }},
+      {Finch,
        name: TinyFinch,
        pools: %{
          :default => [

@@ -1,6 +1,16 @@
 defmodule ProxyTestTest do
   use ExUnit.Case
 
+  test "Squid Proxy Req Package" do
+    assert ProxyTest.Squid.req_bad() == :bad
+    assert ProxyTest.Squid.req_good() == :good
+  end
+
+  test "Squid Proxy Finch Package" do
+    assert ProxyTest.Squid.finch_bad() == :bad
+    assert ProxyTest.Squid.finch_good() == :good
+  end
+
   test "Tiny Proxy Req Package" do
     assert ProxyTest.Tiny.req_bad() == :bad
     assert ProxyTest.Tiny.req_good() == :good

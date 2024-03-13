@@ -1,12 +1,11 @@
 defmodule ProxyTest.Tiny do
   @moduledoc """
-  Documentation for `ProxyTest`.
+  Documentation for `ProxyTest.Tiny`.
   """
 
   def connection_options do
     [
       protocols: [:http1],
-      # proxy_headers: [{"Proxy-Connection", "Keep-Alive"}],
       proxy: {:http, "127.0.0.1", 8081, []}
     ]
   end

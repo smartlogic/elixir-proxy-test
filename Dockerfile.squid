@@ -1,0 +1,2 @@
+FROM elestio/squid:v6.7.1
+COPY squid.conf /etc/squid/squid.conf
