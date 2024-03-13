@@ -21,7 +21,7 @@ Caddy with anything based on Mint seems to not work due to a "tunnel proxy retur
 
 The Mint based libraries don't seem to struggle with the Squid or Tinyproxy server
 
-### Developing
+## Developing
 
 1. Install Elixir, tested with 1.14 on OTP 25 currently
 2. Run `mix test`
