@@ -10,6 +10,7 @@
 :8080 {
 	route {
 		forward_proxy {
+			basic_auth test password
 			acl {
 				allow *.google.com
 				allow *.smartlogic.io

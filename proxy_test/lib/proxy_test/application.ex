@@ -7,6 +7,8 @@ defmodule ProxyTest.Application do
 
   @impl true
   def start(_type, _args) do
+    auth64 = Base.encode64("test:password")
+
     children = [
       # Starts a worker by calling: ProxyTest.Worker.start_link(arg)
       # {ProxyTest.Worker, arg}
@@ -17,7 +19,8 @@ defmodule ProxyTest.Application do
            size: 5,
            conn_opts: [
              protocols: [:http1],
-             proxy: {:http, "127.0.0.1", 3128, []}
+             proxy: {:http, "127.0.0.1", 3128, []},
+             proxy_headers: [{"Proxy-Authorization", "Basic #{auth64}"}]
            ]
          ]
        }},
@@ -28,7 +31,8 @@ defmodule ProxyTest.Application do
            size: 5,
            conn_opts: [
              protocols: [:http1],
-             proxy: {:http, "127.0.0.1", 8081, []}
+             proxy: {:http, "127.0.0.1", 8081, []},
+             proxy_headers: [{"Proxy-Authorization", "Basic #{auth64}"}]
            ]
          ]
        }},
@@ -39,7 +43,8 @@ defmodule ProxyTest.Application do
            size: 5,
            conn_opts: [
              protocols: [:http1],
-             proxy: {:http, "127.0.0.1", 8080, []}
+             proxy: {:http, "127.0.0.1", 8080, []},
+             proxy_headers: [{"Proxy-Authorization", "Basic #{auth64}"}]
            ]
          ]
        }}

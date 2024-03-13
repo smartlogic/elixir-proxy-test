@@ -23,9 +23,10 @@ defmodule ProxyTest.MixProject do
   defp deps do
     [
       {:finch, "~> 0.18.0"},
-      {:req, "~> 0.4.13"}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:req, "~> 0.4.13"},
+      {:castore, "~> 1.0"},
+      {:mint, "~> 1.0"},
+      {:httpoison, "~> 2.0"}
     ]
   end
 end
